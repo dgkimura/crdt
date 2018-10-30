@@ -49,3 +49,62 @@ TEST(CounterTest, testGCounterCompareBetweenMergedAndUnmergedCounters)
     ASSERT_FALSE(a_counter.compare(another_counter));
     ASSERT_TRUE(another_counter.compare(a_counter));
 }
+
+
+TEST(CounterTest, testPNCounterInitialCounterHasZeroValue)
+{
+    crdt::pncounter counter(1);
+
+    ASSERT_EQ(0, counter.query());
+}
+
+
+TEST(CounterTest, testPNCounterIncrementingCounterIncrementsValue)
+{
+    crdt::pncounter counter(1);
+
+    counter.increment(5);
+    ASSERT_EQ(5, counter.query());
+}
+
+
+TEST(CounterTest, testPNCounterDecrementingCounterDecrementsValue)
+{
+    crdt::pncounter counter(1);
+
+    counter.decrement(5);
+    ASSERT_EQ(-5, counter.query());
+}
+
+
+TEST(CounterTest, testPNCounterMergingCounterCombinesValue)
+{
+    crdt::pncounter a_counter(1);
+    crdt::pncounter another_counter(2);
+
+    a_counter.increment(5);
+    another_counter.increment(10);
+
+    a_counter.merge(another_counter);
+
+    ASSERT_EQ(15, a_counter.query());
+}
+
+
+TEST(CounterTest, testPNCounterCompareBetweenMergedAndUnmergedCounters)
+{
+    crdt::pncounter a_counter(1);
+    crdt::pncounter another_counter(2);
+
+    a_counter.increment(5);
+    another_counter.decrement(10);
+
+    a_counter.merge(another_counter);
+
+    // a_counter:       [5, 0]
+    //                  [0, 10]
+    // another_counter: [0, 0]
+    //                  [0, 10]
+    ASSERT_FALSE(a_counter.compare(another_counter));
+    ASSERT_TRUE(another_counter.compare(a_counter));
+}
