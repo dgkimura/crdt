@@ -3,6 +3,7 @@ project(crdt.src)
 
 set(SOURCES
     counter.cpp
+    set.cpp
 )
 
 add_library(crdt SHARED ${SOURCES})
