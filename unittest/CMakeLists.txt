@@ -13,6 +13,7 @@ ExternalProject_Add(
 
 set(SOURCES
     counter_unittest.cpp
+    register_unittest.cpp
     set_unittest.cpp
 )
 
