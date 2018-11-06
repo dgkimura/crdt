@@ -27,7 +27,7 @@ TEST(RegisterTest, testMergeUpdatesWithLastWrittenRegisterValue)
     crdt::lwwregister<int> lwwregister1(1);
     lwwregister1.assign(42);
 
-    crdt::lwwregister<int> lwwregister2(1);
+    crdt::lwwregister<int> lwwregister2(2);
     lwwregister2.assign(43);
 
     lwwregister1.merge(lwwregister2);

@@ -1,8 +1,6 @@
 #ifndef __REGISTER_HPP_INCLUDED__
 #define __REGISTER_HPP_INCLUDED__
 
-#include <chrono>
-
 
 namespace crdt
 {
@@ -13,19 +11,15 @@ class lwwregister
 {
 public:
 
-    lwwregister(uint32_t id) : _id(id)
+    lwwregister(uint32_t id) : _id(id), _time_point(0)
     {
     }
 
     void
     assign(T t)
     {
-        auto now = std::chrono::high_resolution_clock::now();
-        if (_time_point < now)
-        {
-            _t = t;
-            _time_point = now;
-        }
+        _time_point += 1;
+        _t = t;
     }
 
     T
@@ -47,6 +41,7 @@ public:
         if (compare(other))
         {
             _t = other._t;
+            _time_point = other._time_point;
         }
     }
 
@@ -54,7 +49,7 @@ private:
 
     uint32_t _id;
 
-    std::chrono::time_point<std::chrono::high_resolution_clock> _time_point;
+    uint32_t _time_point;
 
     T _t;
 };
