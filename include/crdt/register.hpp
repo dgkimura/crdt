@@ -1,6 +1,8 @@
 #ifndef __REGISTER_HPP_INCLUDED__
 #define __REGISTER_HPP_INCLUDED__
 
+#include <cstdint>
+
 
 namespace crdt
 {
