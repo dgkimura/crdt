@@ -1,5 +1,6 @@
-#include "crdt/register.hpp"
 #include "gtest/gtest.h"
+
+#include "crdt/register.hpp"
 
 
 TEST(RegisterTest, testAssignValueToLWWRegister)

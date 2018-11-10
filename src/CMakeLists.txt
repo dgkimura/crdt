@@ -11,3 +11,7 @@ add_library(crdt SHARED ${SOURCES})
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 set_property(TARGET crdt PROPERTY CXX_STANDARD 11)
+set_target_properties(crdt
+    PROPERTIES
+        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+)

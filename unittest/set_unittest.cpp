@@ -1,5 +1,6 @@
-#include "crdt/set.hpp"
 #include "gtest/gtest.h"
+
+#include "crdt/set.hpp"
 
 
 TEST(SetTest, testEmptyOrsetLookup)

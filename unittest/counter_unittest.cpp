@@ -1,5 +1,6 @@
-#include "crdt/counter.hpp"
 #include "gtest/gtest.h"
+
+#include "crdt/counter.hpp"
 
 
 TEST(CounterTest, testGCounterInitialCounterHasZeroValue)
