@@ -41,9 +41,6 @@ matrix:
 before_install:
     - eval "${MATRIX_EVAL}"
 
-install:
-  - sudo apt-get install libgtest-dev
-
 before_script:
   - cmake .
 
